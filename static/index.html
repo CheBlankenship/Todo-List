@@ -8,12 +8,15 @@
     <link href="/static/style.css" rel="stylesheet">
   </head>
   <body>
+    <h2 id="title">Reminders</h2>
     <form id="form">
-      <input id="new-task" type="text" name="task" placeholder="What to do?">
+      <input id="new-task" type="text" name="task" placeholder="+ Add and Enter" autocomplete="off">
+      <div class="button-bar"></div>
     </form>
     <ul id="task-list"></ul>
     <div class="button-bar">
-      <button id="remove-completed">Remove completed</button>
+      <button id="remove-completed" class="btns">Remove completed</button>
+      <input type="button" onclick="history.go(0)" value="Upload" class="btns upload">
     </div>
   </body>
 </html>

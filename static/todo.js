@@ -1,7 +1,6 @@
 $(document).ready(function() {
   function updatelist(){
     $.get('/tasks', function(tasks){
-      console.log(tasks[0].id);
       tasks.forEach(function(task) {
         if(task.done){
           $('#task-list').append('<li id='+ task.id +'><input type="checkbox" class="checkbox" checked="" >' + task.description + '</li>');
@@ -9,7 +8,6 @@ $(document).ready(function() {
         else{
           $('#task-list').append('<li id='+ task.id +'><input type="checkbox" class="checkbox">' + task.description + '</li>');
         }
-
       });
     });
   }
@@ -18,6 +16,7 @@ $(document).ready(function() {
 
   $('#form').submit(function(event) {
     event.preventDefault();
+    $('#new-task').select();
     var task = $('#new-task').val();
     var data = {
       task: task
@@ -45,7 +44,7 @@ $(document).ready(function() {
     $.get('/tasks', function(tasks) {
       tasks.forEach(function(task) {
         if(task.done){
-            $('#' + 'task.id').remove();
+          $.post('/remove-completed', {id: task.id});
         }
       });
     });

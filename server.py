@@ -35,14 +35,12 @@ def mark_task():
     return jsonify(result)
 
 
-@app.route('/remove-completed', methods=['POST', 'GET'])
+@app.route('/remove-completed', methods=['POST'])
 def remove_task():
-    task_id = int(request.form.get('id'))
-    task_done = request.form.get('done')
+    task_id = request.form.get('id')
     result = db.delete('task',{
-        'id': task_id,
-        'done': task_done
-    }
+        'id': task_id
+        }
     )
     return jsonify(result)
 
